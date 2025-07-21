@@ -40,7 +40,7 @@ def set_bg_image(image_path):
     )
 
 # ✅ Set image (replace this with your actual path)
-set_bg_image("https://github.com/ayushsingh74/ML-Projects/blob/main/shrinivas_pawar-porschen.jpg")  # ✅ Make sure this file exists in the same folder
+set_bg_image(https://raw.githubusercontent.com/ayushsingh74/ML-Projects/main/shrinivas_pawar-porschen.jpg)  # ✅ Make sure this file exists in the same folder
 
 
 page = st.sidebar.selectbox("Navigate", ["🏠 Home", "📊 EDA", "⚙️ Model Training", "🔮 Predict"])
