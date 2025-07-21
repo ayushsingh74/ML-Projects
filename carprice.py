@@ -22,25 +22,25 @@ warnings.filterwarnings("ignore")
 
 st.set_page_config(page_title="Car Price App", layout="wide")
 
-def set_bg_image(image_path):
-    with open(image_path, "rb") as image_file:
-        encoded = base64.b64encode(image_file.read()).decode()
-    st.markdown(
-        f"""
-        <style>
-        .stApp {{
-            background-image: url("data:image/jpg;base64,{encoded}");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }}
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
+def set_bg_image(image_url):
+    response = requests.get(image_url)
+    encoded_string = base64.b64encode(response.content).decode()
+    page_bg_img = f"""
+    <style>
+    .stApp {{
+        background-image: url("data:image/jpg;base64,{encoded_string}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }}
+    </style>
+    """
+    st.markdown(page_bg_img, unsafe_allow_html=True)
 
 # ✅ Set image (replace this with your actual path)
-set_bg_image("https://raw.githubusercontent.com/ayushsingh74/ML-Projects/main/shrinivas_pawar-porschen.jpg")  # ✅ Make sure this file exists in the same folder
+set_bg_image("https://raw.githubusercontent.com/ayushsingh74/ML-Projects/main/shrinivas_pawar-porschen.jpg")
+  # ✅ Make sure this file exists in the same folder
 
 
 page = st.sidebar.selectbox("Navigate", ["🏠 Home", "📊 EDA", "⚙️ Model Training", "🔮 Predict"])
